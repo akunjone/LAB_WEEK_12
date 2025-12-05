@@ -66,7 +66,15 @@ class MainActivity : AppCompatActivity() {
                     movieViewModel.popularMovies.collect {
 // add the list of movies to the adapter
                             movies ->
-                        movieAdapter.addMovies(movies)
+                        movieAdapter.addMovies(
+                            ///ASSIGNMENT:
+                            // implement dengan filter by popularity desc
+                            movies
+                                .filter { movie ->
+                                    movie.popularity != null
+                                }
+                                .sortedByDescending { it.popularity }
+                        )
                     }
                 }
                 launch {
